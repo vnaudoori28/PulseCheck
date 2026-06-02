@@ -1,0 +1,32 @@
+name: PulseCheck Daily Dispatch
+
+on:
+  schedule:
+    - cron: "30 2 * * 1-5"   # 8:00 AM IST (UTC+5:30), weekdays only
+  workflow_dispatch:           # manual trigger for testing
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run PulseCheck dispatch
+        env:
+          MONDAY_API_TOKEN: ${{ secrets.MONDAY_API_TOKEN }}
+          TRACKER_BOARD_ID: ${{ secrets.TRACKER_BOARD_ID }}
+          SMTP_HOST:         ${{ secrets.SMTP_HOST }}
+          SMTP_PORT:         ${{ secrets.SMTP_PORT }}
+          SMTP_USER:         ${{ secrets.SMTP_USER }}
+          SMTP_PASSWORD:     ${{ secrets.SMTP_PASSWORD }}
+        run: python src/pulsecheck.py
