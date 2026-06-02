@@ -23,9 +23,9 @@ MEMBER_EMAILS = {
     "Varalakshmi Naudoori": "lakshmi@authentica.com",
     # "Siddhanth Waghmare":  "sid@authentica.com",
     # "Aakash Korandla":     "aakash@authentica.com",
-    # "Bhavana ???":         "bhavana@authentica.com",
-    # "Debolina ???":        "debolina@authentica.com",
-    # "Komal ???":           "komal@authentica.com",
+    # "Bhavana Saroj":       "bhavana@authentica.com",
+    # "Debolina Ghosh":      "debolina@authentica.com",
+    # "Komal Mishra":        "komal@authentica.com",
     # "Vedanth Maheshwari":  "vedanth@authentica.com",
 }
 
