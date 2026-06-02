@@ -18,15 +18,15 @@ SMTP_PASSWORD      = os.environ["SMTP_PASSWORD"]
 PULSECHECK_DAILY_LINK      = "https://survey.zoho.com/zs/QsBhQd"
 PULSECHECK_ESCALATION_LINK = "https://survey.zoho.com/zs/3CBhu8"
 
-# Member display name → email (add rest of team after testing)
+# Monday full name → email (must match exact text from Logistics/Buddy column)
 MEMBER_EMAILS = {
-    "Lakshmi": "lakshmi@authentica.com",
-    # "Sid":      "sid@authentica.com",
-    # "Aakash":   "aakash@authentica.com",
-    # "Bhavana":  "bhavana@authentica.com",
-    # "Debolina": "debolina@authentica.com",
-    # "Komal":    "komal@authentica.com",
-    # "Vedanth":  "vedanth@authentica.com",
+    "Varalakshmi Naudoori": "lakshmi@authentica.com",
+    # "Siddhanth Waghmare":  "sid@authentica.com",
+    # "Aakash Korandla":     "aakash@authentica.com",
+    # "Bhavana ???":         "bhavana@authentica.com",
+    # "Debolina ???":        "debolina@authentica.com",
+    # "Komal ???":           "komal@authentica.com",
+    # "Vedanth Maheshwari":  "vedanth@authentica.com",
 }
 
 ESCALATION_RECIPIENTS = [
@@ -178,7 +178,8 @@ def main():
         if not programs:
             print(f"  ⚠ No programs found for {name} — skipping")
             continue
-        body = team_email_body(name, programs, PULSECHECK_DAILY_LINK, today)
+        first_name = name.split()[0]
+        body = team_email_body(first_name, programs, PULSECHECK_DAILY_LINK, today)
         send_email([email], f"PulseCheck Daily — {today}", body)
 
     # 3. Send manager escalation email
